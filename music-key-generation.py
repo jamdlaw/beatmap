@@ -39,6 +39,7 @@ def generate_scale(tonic_note, scale_type):
         print(f"Error: Invalid scale type '{scale_type}'")
         return None
 
+    # The intervals list now has 7 steps; we only need the first 6 to get the 7 unique notes.
     intervals = scale_patterns[scale_type]
     
     # 3. FINDING THE STARTING NOTE
@@ -53,13 +54,14 @@ def generate_scale(tonic_note, scale_type):
         print(f"Error: Invalid tonic note '{tonic_note}'")
         return None
 
-    # 4. BUILDING THE SCALE
+    # 4. BUILDING THE SCALE (THE FIX IS HERE)
     scale = [tonic_note]
     # This set will track the letter names we've already used (A, B, C, etc.)
     used_letters = {tonic_note[0]} 
     current_index = start_index
 
-    for step in intervals:
+    # Loop through the first 6 intervals to get the next 6 notes.
+    for step in intervals[:-1]:
         current_index = (current_index + step) % len(notes)
         possible_notes = notes[current_index]
 
@@ -81,7 +83,10 @@ def generate_scale(tonic_note, scale_type):
 
         scale.append(chosen_note)
         used_letters.add(chosen_note[0])
-        
+    
+    # Finally, add the tonic again at the end for the octave.
+    scale.append(tonic_note)
+
     return scale
 
 # --- Let's test it out! ---
