@@ -31,8 +31,13 @@ def generate_scale(tonic_note, scale_type):
     # 2. THE SCALE PATTERNS
     # We can store our scale patterns in a dictionary for easy access.
     scale_patterns = {
-        'major': [2, 2, 1, 2, 2, 2, 1],
-        'minor': [2, 1, 2, 2, 1, 2, 2]
+            'major':       [2, 2, 1, 2, 2, 2, 1],  # Ionian
+            'dorian':      [2, 1, 2, 2, 2, 1, 2],
+            'phrygian':    [1, 2, 2, 2, 1, 2, 2],
+            'lydian':      [2, 2, 2, 1, 2, 2, 1],
+            'mixolydian':  [2, 2, 1, 2, 2, 1, 2],
+            'minor':       [2, 1, 2, 2, 1, 2, 2],  # Aeolian
+            'locrian':     [1, 2, 2, 1, 2, 2, 2]
     }
 
     if scale_type not in scale_patterns:
@@ -110,3 +115,10 @@ print(f"Eb Major: {eb_major_scale}")
 # A Minor (a natural minor scale)
 a_minor_scale = generate_scale('a', 'minor')
 print(f"A minor: {a_minor_scale}")
+
+e_major_scale = generate_scale('e', 'major')
+print(f"E major: {e_major_scale}")
+
+
+g_mixolydian_scale = generate_scale('g', 'mixolydian')
+print(f"G mixolydian: {g_mixolydian_scale}")
