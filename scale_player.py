@@ -1,6 +1,6 @@
 import time
 from pythonosc import udp_client
-from music-key-generation import generate_scale
+from music_key_generation import generate_scale
 
 class ScalePlayer:
     def __init__(self, sc_ip="127.0.0.1", sc_port=57110, synth_name="default", group_id=1000):
